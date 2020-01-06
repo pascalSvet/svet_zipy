@@ -40,11 +40,11 @@ import zipy_elements.*;
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
 		
 		//enter site
-		driver.get(Elements.Zipy_il);
+		driver.get(ElementsLogin.Zipy_il);
 		
 		//close the pop-up window if exist
-		if (driver.findElements(By.xpath(Elements.Popup_welcome_close)).size() != 0){
-			driver.findElement(By.xpath(Elements.Popup_welcome_close)).click();
+		if (driver.findElements(By.xpath(ElementsLogin.Popup_welcome_close)).size() != 0){
+			driver.findElement(By.xpath(ElementsLogin.Popup_welcome_close)).click();
 		}
 		
 		//login  

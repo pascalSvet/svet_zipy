@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 @RunWith(Enclosed.class)
 public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
@@ -35,23 +35,23 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 		@Parameterized.Parameters
 		public static Collection falseData(){
 			return Arrays.asList( new Object[][]{				
-							{Elements.Email, Elements.Password},							//existing email
-							{Elements.Email_domain_withoutAt, Elements.Password},	//wrong email- domain without "@"
-							{Elements.Email_empty, Elements.Password_empty},	//wrong email- empty
-							{Elements.Email_domain_illegal, Elements.Password}, 		//wrong email- domain with non-alphanumeric
-							{Elements.Email_domain_empty, Elements.Password},		//wrong email- empty domain
-							{Elements.Email_ending_withoutDot, Elements.Password}, 	//wrong email- no dot after domain
-							{Elements.Email_ending_empty, Elements.Password}, 		//wrong email- no ending
-							{Elements.Email_ending_illegal, Elements.Password}, 		//wrong email- ending with non-alphabetic
-							{Elements.Email_name_startWithSign, Elements.Password}, 	//wrong email- starting with non-alphanumeric
-							{Elements.Email_name_withSpace, Elements.Password}, 		//wrong email- name with space
-							{Elements.Email_name_empty, Elements.Password}, 			//wrong email- empty name
-							{Elements.Email_domain_oneSignOnly, Elements.Password}, 	//wrong email- domain with one char only
-							{Elements.Email_ending_oneSignOnly, Elements.Password}, 	//wrong email- ending with one char only
-							{Elements.Email_moreThan254signs, Elements.Password},	//wrong email- longer than 254 chars 
-							{Elements.Email, Elements.Password_short}, 				//wrong password - shorter than 5 chars
-							{Elements.Email, Elements.Password_moreThan100signs}, 	//wrong password - longer than 100 chars
-							{Elements.Email, Elements.Password_empty},				//wrong password - empty
+							{ElementsLogin.Email, ElementsLogin.Password},							//existing email
+							{ElementsLogin.Email_domain_withoutAt, ElementsLogin.Password},	//wrong email- domain without "@"
+							{ElementsLogin.Email_empty, ElementsLogin.Password_empty},	//wrong email- empty
+							{ElementsLogin.Email_domain_illegal, ElementsLogin.Password}, 		//wrong email- domain with non-alphanumeric
+							{ElementsLogin.Email_domain_empty, ElementsLogin.Password},		//wrong email- empty domain
+							{ElementsLogin.Email_ending_withoutDot, ElementsLogin.Password}, 	//wrong email- no dot after domain
+							{ElementsLogin.Email_ending_empty, ElementsLogin.Password}, 		//wrong email- no ending
+							{ElementsLogin.Email_ending_illegal, ElementsLogin.Password}, 		//wrong email- ending with non-alphabetic
+							{ElementsLogin.Email_name_startWithSign, ElementsLogin.Password}, 	//wrong email- starting with non-alphanumeric
+							{ElementsLogin.Email_name_withSpace, ElementsLogin.Password}, 		//wrong email- name with space
+							{ElementsLogin.Email_name_empty, ElementsLogin.Password}, 			//wrong email- empty name
+							{ElementsLogin.Email_domain_oneSignOnly, ElementsLogin.Password}, 	//wrong email- domain with one char only
+							{ElementsLogin.Email_ending_oneSignOnly, ElementsLogin.Password}, 	//wrong email- ending with one char only
+							{ElementsLogin.Email_moreThan254signs, ElementsLogin.Password},	//wrong email- longer than 254 chars 
+							{ElementsLogin.Email, ElementsLogin.Password_short}, 				//wrong password - shorter than 5 chars
+							{ElementsLogin.Email, ElementsLogin.Password_moreThan100signs}, 	//wrong password - longer than 100 chars
+							{ElementsLogin.Email, ElementsLogin.Password_empty},				//wrong password - empty
 							});
 		}
 		
@@ -62,18 +62,18 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 			
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 					
 				//check terms
-				driver.findElement(By.xpath(Elements.Login_terms_uncheckedVi)).click();
+				driver.findElement(By.xpath(ElementsLogin.Login_terms_uncheckedVi)).click();
 				
 				//enter login+password according to the parameters
 				driver.findElement(By.id("i_signup-email")).sendKeys(paramEmail, Keys.TAB, paramPassword, Keys.ENTER);
 			
 			try {			
 				//check if user logged in (if so, appears new button "איזור אישי")
-				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-				logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+				logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 				
 			}
 			catch (Exception exc) {
@@ -97,16 +97,16 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 			
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));		
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));		
 			
 				//enter login+password and click signup
-				driver.findElement(By.id(Elements.SignUp_field_email)).sendKeys(Elements.Email, Keys.TAB, Elements.Password);
-				driver.findElement(By.xpath(Elements.SignUp_button_confirm)).click();
+				driver.findElement(By.id(ElementsLogin.SignUp_field_email)).sendKeys(ElementsLogin.Email, Keys.TAB, ElementsLogin.Password);
+				driver.findElement(By.xpath(ElementsLogin.SignUp_button_confirm)).click();
 			
 			try {	
 				//check if user logged in (if so, appears new button "איזור אישי")
-				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-				logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));				
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+				logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));				
 			}
 			catch (Exception exc) {
 				System.out.println("Negative test - failed as expected");
@@ -125,7 +125,7 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 			try {
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 			
 					// enter temporary e-mail by user: 		
 					System.out.println("Please enter your e-mail:  ");
@@ -133,12 +133,12 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 					String  Username= i.nextLine();
 			
 				//enter login+password** 
-				driver.findElement(By.xpath(Elements.Terms_uncheckedVi)).click();
-				driver.findElement(By.id("i_signup-email")).sendKeys(Username, Keys.TAB, Elements.Password, Keys.ENTER);
+				driver.findElement(By.xpath(ElementsLogin.Login_terms_uncheckedVi)).click();
+				driver.findElement(By.id("i_signup-email")).sendKeys(Username, Keys.TAB, ElementsLogin.Password, Keys.ENTER);
 						
 				//check if user logged in (if so, appears new button "איזור אישי")
-				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-				logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+				logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 				
 			}
 			catch (Exception ex) {

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 	
@@ -22,11 +22,11 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 	
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 				
 		//check if sign-up frame opened
 		Thread.sleep(1000);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.SignUp_phone_button)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).isDisplayed());
 	}	
 	
 	//Test - sign-up buttons - close window by open button
@@ -35,13 +35,13 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		Thread.sleep(500);
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 	
 		//check if sign-up frame closed
 		Thread.sleep(500);
-		Assert.assertFalse(driver.findElement(By.xpath(Elements.SignUp_phone_button)).isDisplayed());
+		Assert.assertFalse(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).isDisplayed());
 	}	
 	
 	//Test - sign-up buttons - close window by X button
@@ -50,13 +50,13 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//press X button
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.LoginFrame_close))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.LoginFrame_close))).click();
 	
 		//check if sign-up frame closed
 		Thread.sleep(500);
-		Assert.assertFalse(driver.findElement(By.xpath(Elements.SignUp_phone_button)).isDisplayed());
+		Assert.assertFalse(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).isDisplayed());
 	}	
 	
 	//Test - sign-up buttons - show password
@@ -65,16 +65,16 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 		//enter the password
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("i_signup-email"))).sendKeys(Keys.TAB, Elements.Password);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("i_signup-email"))).sendKeys(Keys.TAB, ElementsLogin.Password);
 		//click show password
-		driver.findElement(By.xpath(Elements.SignUp_PasswordHiden)).click();
+		driver.findElement(By.xpath(ElementsLogin.SignUp_PasswordHiden)).click();
 		
 		//check if password now shown 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.SignUp_PasswordShown)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.SignUp_PasswordShown)).isDisplayed());
 	}	
 	
 	//Test - sign-up buttons - hide password
@@ -83,16 +83,16 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//enter the password
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("i_signup-email"))).sendKeys(Keys.TAB, Elements.Password);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("i_signup-email"))).sendKeys(Keys.TAB, ElementsLogin.Password);
 		//click show password and hide password again
-		driver.findElement(By.xpath(Elements.SignUp_PasswordHiden)).click();		
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_PasswordShown))).click();
+		driver.findElement(By.xpath(ElementsLogin.SignUp_PasswordHiden)).click();		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_PasswordShown))).click();
 		
 		//check if password now hidden 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.SignUp_PasswordHiden)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.SignUp_PasswordHiden)).isDisplayed());
 	}	
 	
 	//Test - sign-up buttons - discounts v-check (uncheck) 
@@ -101,14 +101,14 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 		//uncheck the discounts
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_discounts_checkVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_discounts_checkVi))).click();
 		
 		//check if the Vi is unchecked now 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.Login_discounts_uncheckVi)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.Login_discounts_uncheckVi)).isDisplayed());
 	}	
 
 	//Test - sign-up buttons - discounts v-check
@@ -117,15 +117,15 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 		//uncheck and check again the discounts
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_discounts_checkVi))).click();
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_discounts_uncheckVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_discounts_checkVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_discounts_uncheckVi))).click();
 
 		//check if the Vi is checked now 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.Login_discounts_checkVi)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.Login_discounts_checkVi)).isDisplayed());
 	}
 
 	//Test - sign-up buttons - terms v-check
@@ -134,14 +134,14 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 		//check the terms
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_terms_uncheckedVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_terms_uncheckedVi))).click();
 
 		//check if the Vi is checked now 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.Login_terms_checkedVi)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.Login_terms_checkedVi)).isDisplayed());
 	}
 	
 	//Test - sign-up buttons - terms v-check (uncheck)
@@ -150,15 +150,15 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 		//check the terms
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_terms_uncheckedVi))).click();
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_terms_checkedVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_terms_uncheckedVi))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_terms_checkedVi))).click();
 
 		//check if the Vi is checked now 
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.Login_terms_uncheckedVi)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.Login_terms_uncheckedVi)).isDisplayed());
 	}
 
 	//Test - sign-up buttons - facebook
@@ -167,9 +167,9 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//choose by FB
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_button))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_button))).click();
 		for (String currentWindow: driver.getWindowHandles()) {
 		       driver.switchTo().window(currentWindow);
 		}				
@@ -185,9 +185,9 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//choose by google
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_google_button))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_google_button))).click();
 		for (String currentWindow: driver.getWindowHandles()) {
 		       driver.switchTo().window(currentWindow);
 		}				
@@ -203,13 +203,13 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//choose by google
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phone_button))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phone_button))).click();
 		
 		//check if the google sign-in window opened
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.SignUp_phoneNumber)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.SignUp_phoneNumber)).isDisplayed());
 	}
 	
 	//Test - sign-up buttons - phone switching to sign-in
@@ -218,14 +218,14 @@ public class Positive_Tests_signUp_buttons extends Tests_signUp_main {
 			
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		//choose by google
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phone_button))).click();
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phoneNumber_toSignIn))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phone_button))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phoneNumber_toSignIn))).click();
 
 		//check if the google sign-in window opened
 		Thread.sleep(500);
-		Assert.assertTrue(driver.findElement(By.xpath(Elements.SignIn_phoneNumber_toSignUp)).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath(ElementsLogin.SignIn_phoneNumber_toSignUp)).isDisplayed());
 	}
 
 }

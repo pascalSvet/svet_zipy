@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
 import net.bytebuddy.implementation.bytecode.Throw;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 @RunWith(Enclosed.class)
 public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
@@ -37,11 +37,11 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 			@Parameterized.Parameters
 			public static Collection falseData(){
 				return Arrays.asList( new Object[][]{				
-								{Elements.Email_noGoogle, Elements.Password},		//email with no google account		
-								{Elements.Email_ending_illegal, Elements.Password},	//incorrect email
-								{Elements.Email_empty, Elements.Password},			//empty email 
-								{Elements.Email, Elements.Password_empty},			//empty password
-								{Elements.Email_zipy, Elements.Password_short},		//wrong password
+								{ElementsLogin.Email_noGoogle, ElementsLogin.Password},		//email with no google account		
+								{ElementsLogin.Email_ending_illegal, ElementsLogin.Password},	//incorrect email
+								{ElementsLogin.Email_empty, ElementsLogin.Password},			//empty email 
+								{ElementsLogin.Email, ElementsLogin.Password_empty},			//empty password
+								{ElementsLogin.Email_zipy, ElementsLogin.Password_short},		//wrong password
 								});
 			}
 	
@@ -52,10 +52,10 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 				//choose signup by google
-				driver.findElement(By.xpath(Elements.SignUp_google_button)).click();
+				driver.findElement(By.xpath(ElementsLogin.SignUp_google_button)).click();
 				WebDriverWait wait = new WebDriverWait(driver, 20);	
 				
 				//move to google frame
@@ -65,15 +65,15 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 				
 				try {
 					// enter google account identifiers: 
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_google_field)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_google_field)))
 					.sendKeys(paramGoogle, Keys.ENTER);
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_googlePassword_field)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_googlePassword_field)))
 					.sendKeys(paramGPassword, Keys.ENTER);
 					
 							
 					//check if user logged in
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-					logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+					logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 					
 				}
 				catch (Exception exc) {
@@ -93,16 +93,16 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 		//TEST - sign up with incorrect Google details, entered by user (The comment markers should be deleted if this test is needed)
 		@Test		
 		public  void N_signUp_byGoogle_EnteredByUser() throws InterruptedException {
-				/*
-				System.out.println("Running test with incorrect email and password entered by user);
+		/*		
+				System.out.println("Running test with incorrect email and password entered by user");
 		
 			
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 		
 				//choose signup by google
-				driver.findElement(By.xpath(Elements.SignUp_google_button)).click();
+				driver.findElement(By.xpath(ElementsLogin.SignUp_google_button)).click();
 				WebDriverWait wait = new WebDriverWait(driver, 20);	
 						
 				// ask user for google account identifiers: 		
@@ -114,15 +114,15 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 						String  Temp_googlePassword= m.nextLine();
 			try {
 				// enter google account identifiers: 
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_google_field)))
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_google_field)))
 				.sendKeys(Temp_google, Keys.ENTER);
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_googlePassword_field)))
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_googlePassword_field)))
 				.sendKeys(Temp_googlePassword, Keys.ENTER);
 				
 						
 				//check if user logged in
-				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-				logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+				logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 				
 			}
 			catch (Exception exc) {

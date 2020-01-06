@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 @RunWith(Enclosed.class)
 public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
@@ -33,14 +33,14 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 		@Parameterized.Parameters
 		public static Collection falseData(){
 			return Arrays.asList( new Object[][]{
-							{Elements.PhoneNumber},					//existing number
-							{Elements.PhoneNumber_short},			//number too short 
-							{Elements.PhoneNumber_long},			//number too long 
-							{Elements.PhoneNumber_letters},			//number including non digit signs in the middle
-							{Elements.PhoneNumber_letterF},			//number starting not with 0
-							{Elements.PhoneNumber_wiredPhone},		//wired phone number
-							{Elements.PhoneNumber_mobileIllegal},	//illegal mobile number
-							{Elements.PhoneNumber_wiredIllegal}		//illegal wired phone number
+							{ElementsLogin.PhoneNumber},					//existing number
+							{ElementsLogin.PhoneNumber_short},			//number too short 
+							{ElementsLogin.PhoneNumber_long},			//number too long 
+							{ElementsLogin.PhoneNumber_letters},			//number including non digit signs in the middle
+							{ElementsLogin.PhoneNumber_letterF},			//number starting not with 0
+							{ElementsLogin.PhoneNumber_wiredPhone},		//wired phone number
+							{ElementsLogin.PhoneNumber_mobileIllegal},	//illegal mobile number
+							{ElementsLogin.PhoneNumber_wiredIllegal}		//illegal wired phone number
 							});
 		}
 		
@@ -52,31 +52,31 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 				
 					//press signup button		
 					JavascriptExecutor ex=(JavascriptExecutor)driver;
-					ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+					ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 					//choose signup by phone
-					driver.findElement(By.xpath(Elements.SignUp_phone_button)).click();
+					driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
 					WebDriverWait wait = new WebDriverWait(driver, 20);	
 					
 					// enter phone number according to the parameters			
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phoneNumber)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phoneNumber)))
 					.sendKeys(paramPhone, Keys.ENTER);
 				try {
 					//press sign-up button if enabled
-					wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(Elements.SignUp_phone_pressEnter)))).click();
+					wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_pressEnter)))).click();
 					
 					//enter phone code if needed: 		
-					if(!driver.findElement(By.xpath(Elements.SignUp_phone_messageExist)).isEnabled()) {
+					if(!driver.findElement(By.xpath(ElementsLogin.SignUp_phone_messageExist)).isEnabled()) {
 							System.out.println("Please enter the code from your phone:  ");
 							Scanner j= new Scanner(System.in);
 							String  phone_code= j.nextLine();
-						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phone_fieldCode)))
+						wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phone_fieldCode)))
 						.sendKeys(phone_code, Keys.ENTER);
 					}
 							
 					//check if user logged in (if so, appears new button "איזור אישי")
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-					logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+					logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 					
 				}
 				catch (Exception exc) {
@@ -100,32 +100,32 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 			try {
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 				//choose signup by phone
-				driver.findElement(By.xpath(Elements.SignUp_phone_button)).click();
+				driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
 				WebDriverWait wait = new WebDriverWait(driver, 20);	
 				
 				// enter temporary phone number** : 		
 						System.out.println("Please enter your phone number:   ");
 						Scanner k= new Scanner(System.in);
 						String  Temp_phoneNumber= k.nextLine();		
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phoneNumber)))
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phoneNumber)))
 				.sendKeys(Temp_phoneNumber, Keys.ENTER);
-				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(Elements.Temp_phoneNumber_pressEnter)))).click();
+				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_pressEnter)))).click();
 				
 				// enter phone code: 		
-				if(!driver.findElement(By.xpath(Elements.SignUp_phone_messageExist)).isEnabled()) {
+				if(!driver.findElement(By.xpath(ElementsLogin.SignUp_phone_messageExist)).isEnabled()) {
 						System.out.println("Please enter the code from your phone:  ");
 						Scanner j= new Scanner(System.in);
 						String  phone_code= j.nextLine();
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Temp_phoneNumber_fieldCode)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phone_pressEnter)))
 					.sendKeys(phone_code, Keys.ENTER);
 				}
 						
 				//check if user logged in
-				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-				logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+				new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+				logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 				
 			}
 			catch (Exception ex) {
@@ -135,7 +135,7 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 			finally {	
 				Assert.assertTrue(errorCaught || !logged);		
 			}	
-			 */
+			*/ 
 		}
 	}
 }

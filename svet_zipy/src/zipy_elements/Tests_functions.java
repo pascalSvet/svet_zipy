@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 	
 public class Tests_functions {
@@ -31,14 +31,14 @@ public class Tests_functions {
 			
 		//press login button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.Login_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.Login_button)));
 		Thread.sleep(500);
 						
 		//enter login+password and wait for the logging-in
-		new Actions (driver).moveToElement(driver.findElement(By.xpath(Elements.Login_usernameField))).click()
-		.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Elements.Email, Keys.TAB, Elements.Password, Keys.ENTER)
+		new Actions (driver).moveToElement(driver.findElement(By.xpath(ElementsLogin.Login_usernameField))).click()
+		.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(ElementsLogin.Email, Keys.TAB, ElementsLogin.Password, Keys.ENTER)
 		.build().perform();
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));											
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));											
 	}
 	
 	// A function for unloging.
@@ -46,11 +46,11 @@ public class Tests_functions {
 			
 		//press login button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.Logedin_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.Logedin_button)));
 								
 		//enter login+password and wait for the logging-in
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_disconnect))).click();				
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.Login_button))).click();;											
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_disconnect))).click();				
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_button))).click();;											
 
 	}
 	
@@ -59,10 +59,10 @@ public class Tests_functions {
 	public static void emptyCart(WebDriver driver) throws Exception{
 		Thread.sleep(500);
 		//while there is pay button in the cart, continue deleting the first product from the cart and reopen it
-		while (!driver.findElements(By.xpath(Elements.Product_cartPay)).isEmpty() ) {
-				driver.findElement(By.xpath(Elements.Product_cartRemove)).click();
-				driver.findElement(By.xpath(Elements.Product_closeCart)).click();
-				driver.findElement(By.xpath(Elements.Product_openCart)).click();
+		while (!driver.findElements(By.xpath(ElementsBuying.Product_cartPay)).isEmpty() ) {
+				driver.findElement(By.xpath(ElementsBuying.Product_cartRemove)).click();
+				driver.findElement(By.xpath(ElementsBuying.Product_closeCart)).click();
+				driver.findElement(By.xpath(ElementsBuying.Product_openCart)).click();
 				Thread.sleep(500);
 		}	
 	}
@@ -71,10 +71,10 @@ public class Tests_functions {
 		public static void emptyFavorites(WebDriver driver) throws Exception{
 			Thread.sleep(500);
 			//while there is pay button in the cart, continue deleting the first product from the cart and reopen it
-			while (!driver.findElements(By.xpath(Elements.Product_favoritesTitle)).isEmpty() ) {
-					driver.findElement(By.xpath(Elements.Product_favoritesRemove)).click();
-					driver.findElement(By.xpath(Elements.Product_closeFavorites)).click();
-					driver.findElement(By.xpath(Elements.Product_openFavorites)).click();
+			while (!driver.findElements(By.xpath(ElementsBuying.Product_favoritesTitle)).isEmpty() ) {
+					driver.findElement(By.xpath(ElementsBuying.Product_favoritesRemove)).click();
+					driver.findElement(By.xpath(ElementsBuying.Product_closeFavorites)).click();
+					driver.findElement(By.xpath(ElementsBuying.Product_openFavorites)).click();
 					Thread.sleep(500);
 			}	
 		}

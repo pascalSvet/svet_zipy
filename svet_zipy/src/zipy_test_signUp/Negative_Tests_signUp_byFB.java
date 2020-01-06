@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
 import net.bytebuddy.implementation.bytecode.Throw;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 @RunWith(Enclosed.class)
 public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
@@ -37,11 +37,11 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 			@Parameterized.Parameters
 			public static Collection falseData(){
 				return Arrays.asList( new Object[][]{				
-								{Elements.Email, Elements.Password},					//email with no FB account		
-								{Elements.Email_domain_withoutAt, Elements.Password},	//incorrect email
-								{Elements.Email_empty, Elements.Password},				//empty email 
-								{Elements.Email, Elements.Password_empty},				//empty password
-								{Elements.Email, Elements.Password_short},				//wrong password
+								{ElementsLogin.Email, ElementsLogin.Password},					//email with no FB account		
+								{ElementsLogin.Email_domain_withoutAt, ElementsLogin.Password},	//incorrect email
+								{ElementsLogin.Email_empty, ElementsLogin.Password},				//empty email 
+								{ElementsLogin.Email, ElementsLogin.Password_empty},				//empty password
+								{ElementsLogin.Email, ElementsLogin.Password_short},				//wrong password
 								});
 			}
 	
@@ -52,10 +52,10 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 				//choose signup by FB
-				driver.findElement(By.xpath(Elements.SignUp_fb_button)).click();
+				driver.findElement(By.xpath(ElementsLogin.SignUp_fb_button)).click();
 				//move to FB frame
 				for (String currentWindow: driver.getWindowHandles()) {
 				       driver.switchTo().window(currentWindow);
@@ -64,14 +64,14 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 
 				try {
 					// enter FB account identifiers and accept connection: 		
-					new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_field)))
+					new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_field)))
 					.sendKeys(paramEmail, Keys.TAB, paramPassword, Keys.ENTER);
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_userAccept)))
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_userAccept)))
 					.click();
 		
 					//check if user logged in
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-					logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));					
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+					logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));					
 				}
 				catch (Exception exc) {
 					System.out.println("Negative test - failed as expected");
@@ -91,14 +91,14 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 		@Test		
 		public  void N_signUp_byFB_EnteredByUser() throws InterruptedException {
 				/*	
-				System.out.println("Running test with incorrect email and password entered by user);
+				System.out.println("Running test with incorrect email and password entered by user");
 			
 				//press signup button		
 				JavascriptExecutor ex=(JavascriptExecutor)driver;
-				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+				ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 				//choose signup by FB
-				driver.findElement(By.xpath(Elements.SignUp_fb_button)).click();
+				driver.findElement(By.xpath(ElementsLogin.SignUp_fb_button)).click();
 				//move to FB frame
 				for (String currentWindow: driver.getWindowHandles()) {
 				       driver.switchTo().window(currentWindow);
@@ -114,15 +114,15 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 				try {
 					// enter FB account identifiers: 		
 					WebDriverWait wait = new WebDriverWait(driver, 20);
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_field)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_field)))
 					.sendKeys(Temp_fb, Keys.ENTER);
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fbPassword_field)))
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fbPassword_field)))
 					.sendKeys(Temp_fbPassword, Keys.ENTER);
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_userAccept))).click();
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_userAccept))).click();
 							
 					//check if user logged in
-					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-					logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+					new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+					logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 					
 				}
 				catch (Exception exc) {

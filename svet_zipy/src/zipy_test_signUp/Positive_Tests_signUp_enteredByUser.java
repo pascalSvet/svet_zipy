@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.Assert;
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 	
@@ -21,19 +21,19 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 	
 		// ask user and enter e-mail, with default password: 		
 			System.out.println("Please enter your e-mail:  ");
 			Scanner i= new Scanner(System.in);
 			String  temp_mail= i.nextLine();	
-		driver.findElement(By.xpath(Elements.Login_terms_uncheckedVi)).click();
-		driver.findElement(By.id("i_signup-email")).sendKeys(temp_mail, Keys.TAB, Elements.Password, Keys.ENTER);
+		driver.findElement(By.xpath(ElementsLogin.Login_terms_uncheckedVi)).click();
+		driver.findElement(By.id("i_signup-email")).sendKeys(temp_mail, Keys.TAB, ElementsLogin.Password, Keys.ENTER);
 		
 	
 		//check if user logged in
-		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-		Boolean logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+		Boolean logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 		Assert.assertTrue(logged);
 		
 	}	
@@ -45,33 +45,33 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 	
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 		//choose signup by phone
-		driver.findElement(By.xpath(Elements.SignUp_phone_button)).click();
+		driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
 		WebDriverWait wait = new WebDriverWait(driver, 20);	
 		
 		// ask user and enter temporary phone number: 		
 				System.out.println("Please enter your phone number:   ");
 				Scanner k= new Scanner(System.in);
 				String  Temp_phoneNumber= k.nextLine();		
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phoneNumber)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phoneNumber)))
 		.sendKeys(Temp_phoneNumber, Keys.ENTER);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(Elements.SignUp_phone_pressEnter)))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(ElementsLogin.SignUp_phone_pressEnter)))).click();
 		
 		
 		// ask user and enter phone code: 		
-		if(!driver.findElement(By.xpath(Elements.SignUp_phone_messageExist)).isEnabled()) {
+		if(!driver.findElement(By.xpath(ElementsLogin.SignUp_phone_messageExist)).isEnabled()) {
 			System.out.println("Please enter the code from your phone:  ");
 			Scanner j= new Scanner(System.in);
 			String  phone_code= j.nextLine();
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_phone_fieldCode)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phone_fieldCode)))
 		.sendKeys(phone_code, Keys.ENTER);
 		}
 		
 		//check if user logged in
-		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-		Boolean logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+		Boolean logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 		Assert.assertTrue(logged);	
 	
 	}
@@ -83,10 +83,10 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 	
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 		//choose signup by google
-		driver.findElement(By.xpath(Elements.SignUp_google_button)).click();
+		driver.findElement(By.xpath(ElementsLogin.SignUp_google_button)).click();
 		for (String currentWindow: driver.getWindowHandles()) {
 		       driver.switchTo().window(currentWindow);
 		}
@@ -99,14 +99,14 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 				Scanner m= new Scanner(System.in);
 				String  Temp_googlePassword= m.nextLine();
 		WebDriverWait wait = new WebDriverWait(driver, 20);	
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_google_field)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_google_field)))
 		.sendKeys(Temp_google, Keys.ENTER);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_googlePassword_field)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_googlePassword_field)))
 		.sendKeys(Temp_googlePassword, Keys.ENTER);
 									
 		//check if user logged in
-		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-		Boolean logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+		Boolean logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 		Assert.assertTrue(logged);	
 		
 	}	
@@ -118,10 +118,10 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 	
 		//press signup button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
-		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.SignUp_button)));
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.SignUp_button)));
 
 		//choose signup by FB
-		driver.findElement(By.xpath(Elements.SignUp_fb_button)).click();
+		driver.findElement(By.xpath(ElementsLogin.SignUp_fb_button)).click();
 		
 		for (String currentWindow: driver.getWindowHandles()) {
 		       driver.switchTo().window(currentWindow);
@@ -136,17 +136,17 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 				Scanner m= new Scanner(System.in);
 				String  Temp_fbPassword= m.nextLine();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_field)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_field)))
 		.sendKeys(Temp_fb, Keys.ENTER);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fbPassword_field)))
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fbPassword_field)))
 		.sendKeys(Temp_fbPassword, Keys.ENTER);
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.SignUp_fb_userAccept))).click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_userAccept))).click();
 
 				
 					
 		//check if user logged in
-		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(Elements.UserTopBar)));
-		Boolean logged = (driver.findElement(By.xpath(Elements.UserTopBar)).getText().contains(Elements.SignedIn_ezorIshi));
+		new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));
+		Boolean logged = (driver.findElement(By.xpath(ElementsLogin.UserTopBar)).getText().contains(ElementsHeb.SignedIn_ezorIshi));
 		Assert.assertTrue(logged);
 		
 		

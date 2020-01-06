@@ -11,7 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import zipy_elements.Elements;
+import zipy_elements.*;
 
 public class Tests_buy_main {
 	
@@ -29,11 +29,11 @@ public class Tests_buy_main {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); 
 		
 		//enter site
-		driver.get(Elements.Zipy_il);
+		driver.get(ElementsLogin.Zipy_il);
 		
 		//close the pop-up window if exist
-		if (driver.findElements(By.xpath(Elements.Popup_welcome_close)).size() != 0){
-			driver.findElement(By.xpath(Elements.Popup_welcome_close)).click();
+		if (driver.findElements(By.xpath(ElementsLogin.Popup_welcome_close)).size() != 0){
+			driver.findElement(By.xpath(ElementsLogin.Popup_welcome_close)).click();
 		}
 		
 		
