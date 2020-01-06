@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import zipy_elements.Elements;
 
-public class Tests_buy_item extends Tests_main {
+public class Tests_buy_item extends Tests_buy_main {
 	
 	
 	
 	@Test		
 	public  void buy_from_search() throws InterruptedException {
-		
+	System.out.println("Running test for buying");
+	
 		//press login button		
 		JavascriptExecutor ex=(JavascriptExecutor)driver;
 		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(Elements.Login_button)));
