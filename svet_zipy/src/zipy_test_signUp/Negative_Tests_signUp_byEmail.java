@@ -18,11 +18,11 @@ import junit.framework.Assert;
 import zipy_elements.*;
 
 @RunWith(Enclosed.class)
-public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
+public class Negative_Tests_signUp_byEmail extends Tests_signUp_MAIN {
 	
 	//tests with parameters 
 	@RunWith(Parameterized.class)
-	public static class NegativeTests_signUpByEmail_parameterized extends Tests_signUp_main  {	
+	public static class NegativeTests_signUpByEmail_parameterized extends Tests_signUp_MAIN  {	
 		
 		private static String paramEmail;
 		private static String paramPassword;		
@@ -35,11 +35,11 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 		@Parameterized.Parameters
 		public static Collection falseData(){
 			return Arrays.asList( new Object[][]{				
-							{ElementsLogin.Email, ElementsLogin.Password},							//existing email
-							{ElementsLogin.Email_domain_withoutAt, ElementsLogin.Password},	//wrong email- domain without "@"
-							{ElementsLogin.Email_empty, ElementsLogin.Password_empty},	//wrong email- empty
+							{ElementsLogin.Email, ElementsLogin.Password},						//existing email
+							{ElementsLogin.Email_domain_withoutAt, ElementsLogin.Password},		//wrong email- domain without "@"
+							{ElementsLogin.Email_empty, ElementsLogin.Password_empty},			//wrong email- empty
 							{ElementsLogin.Email_domain_illegal, ElementsLogin.Password}, 		//wrong email- domain with non-alphanumeric
-							{ElementsLogin.Email_domain_empty, ElementsLogin.Password},		//wrong email- empty domain
+							{ElementsLogin.Email_domain_empty, ElementsLogin.Password},			//wrong email- empty domain
 							{ElementsLogin.Email_ending_withoutDot, ElementsLogin.Password}, 	//wrong email- no dot after domain
 							{ElementsLogin.Email_ending_empty, ElementsLogin.Password}, 		//wrong email- no ending
 							{ElementsLogin.Email_ending_illegal, ElementsLogin.Password}, 		//wrong email- ending with non-alphabetic
@@ -48,7 +48,7 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 							{ElementsLogin.Email_name_empty, ElementsLogin.Password}, 			//wrong email- empty name
 							{ElementsLogin.Email_domain_oneSignOnly, ElementsLogin.Password}, 	//wrong email- domain with one char only
 							{ElementsLogin.Email_ending_oneSignOnly, ElementsLogin.Password}, 	//wrong email- ending with one char only
-							{ElementsLogin.Email_moreThan254signs, ElementsLogin.Password},	//wrong email- longer than 254 chars 
+							{ElementsLogin.Email_moreThan254signs, ElementsLogin.Password},		//wrong email- longer than 254 chars 
 							{ElementsLogin.Email, ElementsLogin.Password_short}, 				//wrong password - shorter than 5 chars
 							{ElementsLogin.Email, ElementsLogin.Password_moreThan100signs}, 	//wrong password - longer than 100 chars
 							{ElementsLogin.Email, ElementsLogin.Password_empty},				//wrong password - empty
@@ -88,7 +88,7 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 	}
 	
 	//tests without parameters
-	public static class NegativeTests_signUpByEmail_notParameterized extends Tests_signUp_main {
+	public static class NegativeTests_signUpByEmail_notParameterized extends Tests_signUp_MAIN {
 
 		//TEST - sign up with unchecked terms of use
 		@Test		
@@ -117,7 +117,7 @@ public class Negative_Tests_signUp_byEmail extends Tests_signUp_main {
 			}	
 		}	
 		
-		//TEST - sign up with email and password, entered by the user (The comment markers should be deleted if this test is needed)
+		//TEST - sign up with incorrect email and password, entered by the user (The comment markers should be deleted if this test is needed)
 		@Test		
 		public  void N_signUp_byEmail_enteredByUser() throws InterruptedException {
 			/*	

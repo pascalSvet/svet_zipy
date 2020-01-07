@@ -19,12 +19,12 @@ import net.bytebuddy.implementation.bytecode.Throw;
 import zipy_elements.*;
 
 @RunWith(Enclosed.class)
-public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
+public class Negative_Tests_signUp_byGoogle extends Tests_signUp_MAIN {
 	
 	
 	//tests with parameters 
 	@RunWith(Parameterized.class)
-	public static class Negative_Tests_signUp_byGoogle_parameterized extends Tests_signUp_main  {	
+	public static class Negative_Tests_signUp_byGoogle_parameterized extends Tests_signUp_MAIN  {	
 			
 			private static String paramGoogle;
 			private static String paramGPassword;		
@@ -37,7 +37,7 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 			@Parameterized.Parameters
 			public static Collection falseData(){
 				return Arrays.asList( new Object[][]{				
-								{ElementsLogin.Email_noGoogle, ElementsLogin.Password},		//email with no google account		
+								{ElementsLogin.Email_noGoogle, ElementsLogin.Password},			//email with no google account		
 								{ElementsLogin.Email_ending_illegal, ElementsLogin.Password},	//incorrect email
 								{ElementsLogin.Email_empty, ElementsLogin.Password},			//empty email 
 								{ElementsLogin.Email, ElementsLogin.Password_empty},			//empty password
@@ -56,7 +56,6 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 		
 				//choose signup by google
 				driver.findElement(By.xpath(ElementsLogin.SignUp_google_button)).click();
-				WebDriverWait wait = new WebDriverWait(driver, 20);	
 				
 				//move to google frame
 				for (String currentWindow: driver.getWindowHandles()) {
@@ -88,7 +87,7 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 	}
 
 	//tests without parameters
-	public static class Negative_Tests_signUp_byGoogle_notParameterized extends Tests_signUp_main {
+	public static class Negative_Tests_signUp_byGoogle_notParameterized extends Tests_signUp_MAIN {
 			
 		//TEST - sign up with incorrect Google details, entered by user (The comment markers should be deleted if this test is needed)
 		@Test		
@@ -103,7 +102,6 @@ public class Negative_Tests_signUp_byGoogle extends Tests_signUp_main {
 		
 				//choose signup by google
 				driver.findElement(By.xpath(ElementsLogin.SignUp_google_button)).click();
-				WebDriverWait wait = new WebDriverWait(driver, 20);	
 						
 				// ask user for google account identifiers: 		
 						System.out.println("Please enter your gmail or phone from your google account:   ");

@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import zipy_elements.*;
 
-public class Tests_cart_price extends Tests_cart_main {
+public class Tests_cart_price extends Tests_cart_MAIN {
 	
 	
 	//Test - checking the final sum in the cart includes the delivery 

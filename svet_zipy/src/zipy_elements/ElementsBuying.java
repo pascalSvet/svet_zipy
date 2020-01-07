@@ -8,12 +8,13 @@ public class ElementsBuying {
 	//buying - Elements:
 	public static final String SearchItem =	"rez-micro-usb-cable-usb-charging-cord-mobile-phone-nylon-xiaomi-android-samsung-for-hua-wei";
 	public static final String SearchItem_thumb ="//div[@data-id='32995752928'][@data-position='1']";
-	public static final String Dropbox_color ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']/div[@class='featherlight-content quick-view']/div[@class='featherlight-content-wrap']/div/section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[1]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric']//span[@class='selectric-option-text']";
-	public static final String Dropbox_color_black ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']//div[@class='featherlight-content-wrap']//section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[1]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric-items']/div/ul/li[2]//span[@class='selectric-option-text']";
-	public static final String Dropbox_length ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']/div[@class='featherlight-content quick-view']/div[@class='featherlight-content-wrap']/div/section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[2]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric']//span[@class='selectric-option-text']";
-	public static final String Dropbox_length_1m = "/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']//div[@class='featherlight-content-wrap']//section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[2]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric-items']/div/ul/li[4]//span[@class='selectric-option-text']";
+	public static final String SearchItem_link ="https://www.zipy.co.il/p/%D7%90%D7%9C%D7%99%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1/rez-micro-usb-cable-usb-charging-cord-mobile-phone-nylon-xiaomi-android-samsung-hua-wei/32995752928/";
+	public static final String ProductFramed_color ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']/div[@class='featherlight-content quick-view']/div[@class='featherlight-content-wrap']/div/section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[1]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric']//span[@class='selectric-option-text']";
+	public static final String ProductFramed_color_1 ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']//div[@class='featherlight-content-wrap']//section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[1]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric-items']/div/ul/li[2]//span[@class='selectric-option-text']";
+	public static final String ProductFramed_length ="/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']/div[@class='featherlight-content quick-view']/div[@class='featherlight-content-wrap']/div/section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[2]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric']//span[@class='selectric-option-text']";
+	public static final String ProductFramed_length_1 = "/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']//div[@class='featherlight-content-wrap']//section//div[@class='buy-options']/table[@class='product__params']/tbody/tr[2]/td/div[@class='product__params-selection']/div[@class='field__field']/div[@class='select type-variations']/div[1]/div[@class='selectric-items']/div/ul/li[4]//span[@class='selectric-option-text']";
 	public static final String Checkout_button = "/html/body/div[@role='dialog']/div[@class='featherlight-close-layer']/div[@class='featherlight-content quick-view']/div[@class='featherlight-content-wrap']//section//div[@class='product__buy']/div[@class='product__buy-buttons']/div[@class='product__buy-buttons-buy-now']/a[2]//span[@class='button__inner']";
-	public static final String Buy_button = "/html//form[@id='paymentBalanceForm']//button[@type='submit']";
+	public static final String FinalBuy_button = "/html//form[@id='paymentBalanceForm']//button[@type='submit']";
 	public static final String BackToMain_button = "/html//div[@id='wrapper']/div[@class='pay']/div[@class='pay__main']/div[2]//div[@class='pay__step-success']/div[1]/div[@class='pay__step-success-finish']/a[@href='https://www.zipy.co.il/']";
 	public static final String Thanks_box = "/html//div[@id='wrapper']/div[@class='pay']/div[@class='pay__main']/div[2]//div[@class='pay__step-success']/div[1]/p[1]";
 	
@@ -59,12 +60,15 @@ public class ElementsBuying {
 	public static final String Product_discount = "/html//div[@id='wrapper']/div[3]//section/div[@class='product__body']//div[@class='product__table-wrapper']/table[@class='product__params']/thead/tr[2]/td[@class='product__params-sale']/span/span[@class='value']";
 	public static final String Product_delivery = "/html//div[@id='wrapper']/div[@class='product__page']//section/div[@class='product__body']//div[@class='product__table-wrapper']/table[@class='product__params']//span[@class='shipping-price']/span[@class='value']";
 
+	public static final String Product_notFound = "//div[@id='wrapper']//main[@role='main']/section[@class='notfound']//div[@class='notfound__text-title']";
+			
 	public static final String Product_noVariations = "https://www.zipy.co.il/p/%D7%90%D7%9C%D7%99%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1/computer-gaming-pc-desktop-onebot-ssd-intel-4gb-ddr4-celeron-ak22-3865u-all-in-one-16-9/32843889521/";
 	public static final String Product_noVariations2 = "https://www.zipy.co.il/p/%D7%90%D7%9C%D7%99%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1/onebot-g32-31-5-inch-curved-led-gaming-monitor-144hz-1920-1080p-dvi-hd-ports-displayport-1800r-immersive-curvature/32887298148/";
 	public static final String Product_noVariationsAmazon = "https://www.zipy.co.il/p/amazon/sidetrak-portable-usb-monitor-12-5-screen-attaches-to-your-laptop-for-easy-travel-efficient-usb-power-compatible-with-mac-pc-chromebook-13-17-laptops-hd-ips-display-patent-pending/B07RJYQN9K/";
 	public static final String Product_oneVariation = "https://www.zipy.co.il/p/%D7%90%D7%9C%D7%99%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1/A/32958346076";
 	public static final String Product_twoVariations = "https://www.zipy.co.il/p/%D7%90%D7%9C%D7%99%D7%90%D7%A7%D7%A1%D7%A4%D7%A8%D7%A1/rez-micro-usb-cable-usb-charging-cord-mobile-phone-nylon-xiaomi-android-samsung-for-hua-wei/32995752928/";
-	
-	
+	public static final String lessThan5_Open ="/html/body/div[@class='wrap wrap_with_mehes']//ul[@class='stores']//a[@alt='פחות מ-5 ₪ בעברית']/span[.='פחות מ-5 ₪']";
+	public static final String lessThan5_dealThumbnail1 = "//*[@id=\"wrapper\"]/div[2]/main/section[2]/div[2]/div[1]/a";
+
 
 }

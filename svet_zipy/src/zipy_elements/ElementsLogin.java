@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ElementsLogin {
 	
 	// login and sign-up Elements:
-	public static final String Zipy_il = "https://www.zipy.co.il/";	
 	public static final String Popup_welcome_close = "//button[@title='Close']";	
 
 	public static final String UserTopBar_close = "//span[@class='topbar__forms-close']";
@@ -78,12 +77,19 @@ public class ElementsLogin {
 	public static final String Email_ending_oneSignOnly = "t est@mail.com";
 	public static final String Email_moreThan254signs = "a12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345@mail.com";
 	public static final String Email_noGoogle = "test@qwer.com";
+	public static final String Email_phone = "050-6000000";
 
 	public static final String Password_short = "123";
 	public static final String Password_moreThan100signs = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901";
 	public static final String Password_empty = "  ";
 
-	
-	
+	public static final String Zipy_il = "https://www.zipy.co.il/";			//Israel
+	public static final String Zipy_ilRu = "https://ru.zipy.co.il/";		//Israel russian
+	public static final String Zipy_gr = "https://www.zipy.gr/";			//Greece
+	public static final String Zipy_cy = "https://www.zipy.com.cy/";		//Cypress
+	public static final String Zipy_ro = "https://www.zipy.ro/";			//Romania
+	public static final String Zipy_it = "https://www.zipy.it/";			//Italy
+	public static final String Zipy_py = "https://www.zipy.pt/";			//Portugal
+
 
 }

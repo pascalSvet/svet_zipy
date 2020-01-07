@@ -19,12 +19,12 @@ import net.bytebuddy.implementation.bytecode.Throw;
 import zipy_elements.*;
 
 @RunWith(Enclosed.class)
-public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
+public class Negative_Tests_signUp_byFB extends Tests_signUp_MAIN {
 	
 	
 	//tests with parameters 
 	@RunWith(Parameterized.class)
-	public static class Negative_Tests_signUp_byFB_parameterized extends Tests_signUp_main  {	
+	public static class Negative_Tests_signUp_byFB_parameterized extends Tests_signUp_MAIN  {	
 			
 			private static String paramEmail;
 			private static String paramPassword;		
@@ -38,10 +38,11 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 			public static Collection falseData(){
 				return Arrays.asList( new Object[][]{				
 								{ElementsLogin.Email, ElementsLogin.Password},					//email with no FB account		
+								{ElementsLogin.Email_phone, ElementsLogin.Password},			//phone with no FB account		
 								{ElementsLogin.Email_domain_withoutAt, ElementsLogin.Password},	//incorrect email
-								{ElementsLogin.Email_empty, ElementsLogin.Password},				//empty email 
-								{ElementsLogin.Email, ElementsLogin.Password_empty},				//empty password
-								{ElementsLogin.Email, ElementsLogin.Password_short},				//wrong password
+								{ElementsLogin.Email_empty, ElementsLogin.Password},			//empty email 
+								{ElementsLogin.Email, ElementsLogin.Password_empty},			//empty password
+								{ElementsLogin.Email, ElementsLogin.Password_short},			//wrong password
 								});
 			}
 	
@@ -85,7 +86,7 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 	}
 
 	//tests without parameters
-	public static class NegativeTests_signUpByEmail_notParameterized extends Tests_signUp_main {
+	public static class NegativeTests_signUpByEmail_notParameterized extends Tests_signUp_MAIN {
 			
 		//TEST - sign up with incorrect FB details, entered by user (The comment markers should be deleted if this test is needed)
 		@Test		
@@ -113,7 +114,6 @@ public class Negative_Tests_signUp_byFB extends Tests_signUp_main {
 
 				try {
 					// enter FB account identifiers: 		
-					WebDriverWait wait = new WebDriverWait(driver, 20);
 					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_field)))
 					.sendKeys(Temp_fb, Keys.ENTER);
 					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fbPassword_field)))

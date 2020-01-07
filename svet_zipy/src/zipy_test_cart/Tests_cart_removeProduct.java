@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import zipy_elements.*;
 
-public class Tests_cart_removeProduct extends Tests_cart_main {
+public class Tests_cart_removeProduct extends Tests_cart_MAIN {
 	
 	
 	//Test - removing product from the cart

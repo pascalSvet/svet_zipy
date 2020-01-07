@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import junit.framework.Assert;
 import zipy_elements.*;
 
-public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
+public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_MAIN {
 	
 	//TEST - sign up with unused email, entered by the user
 	@Test		
@@ -49,7 +49,6 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 
 		//choose signup by phone
 		driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
-		WebDriverWait wait = new WebDriverWait(driver, 20);	
 		
 		// ask user and enter temporary phone number: 		
 				System.out.println("Please enter your phone number:   ");
@@ -98,7 +97,6 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 				System.out.println("Please enter your password:   ");
 				Scanner m= new Scanner(System.in);
 				String  Temp_googlePassword= m.nextLine();
-		WebDriverWait wait = new WebDriverWait(driver, 20);	
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_google_field)))
 		.sendKeys(Temp_google, Keys.ENTER);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_googlePassword_field)))
@@ -135,7 +133,6 @@ public class Positive_Tests_signUp_enteredByUser extends Tests_signUp_main {
 				System.out.println("Please enter your password:   ");
 				Scanner m= new Scanner(System.in);
 				String  Temp_fbPassword= m.nextLine();
-		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fb_field)))
 		.sendKeys(Temp_fb, Keys.ENTER);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_fbPassword_field)))

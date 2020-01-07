@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import zipy_elements.*;
 
-public class Tests_cart_addProduct extends Tests_cart_main {
+public class Tests_cart_addProduct extends Tests_cart_MAIN {
 	
 	
 	//Test - adding a product to the cart (product without variations)

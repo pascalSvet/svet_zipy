@@ -18,11 +18,11 @@ import junit.framework.Assert;
 import zipy_elements.*;
 
 @RunWith(Enclosed.class)
-public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
+public class Negative_Tests_signUp_byPhone extends Tests_signUp_MAIN {
 	
 	//tests with parameters 
 	@RunWith(Parameterized.class)
-	public static class NegativeTests_signUpByPhone_parameterized extends Tests_signUp_main  {	
+	public static class NegativeTests_signUpByPhone_parameterized extends Tests_signUp_MAIN  {	
 			
 		private static String paramPhone;
 		public NegativeTests_signUpByPhone_parameterized(String paramPhone) {
@@ -33,14 +33,15 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 		@Parameterized.Parameters
 		public static Collection falseData(){
 			return Arrays.asList( new Object[][]{
-							{ElementsLogin.PhoneNumber},					//existing number
+							{ElementsLogin.PhoneNumber},				//existing number
+							{ElementsLogin.PhoneNumber_emptySpace},		//empty number
 							{ElementsLogin.PhoneNumber_short},			//number too short 
 							{ElementsLogin.PhoneNumber_long},			//number too long 
-							{ElementsLogin.PhoneNumber_letters},			//number including non digit signs in the middle
-							{ElementsLogin.PhoneNumber_letterF},			//number starting not with 0
+							{ElementsLogin.PhoneNumber_letters},		//number including non digit signs in the middle
+							{ElementsLogin.PhoneNumber_letterF},		//number starting not with 0
 							{ElementsLogin.PhoneNumber_wiredPhone},		//wired phone number
 							{ElementsLogin.PhoneNumber_mobileIllegal},	//illegal mobile number
-							{ElementsLogin.PhoneNumber_wiredIllegal}		//illegal wired phone number
+							{ElementsLogin.PhoneNumber_wiredIllegal}	//illegal wired phone number
 							});
 		}
 		
@@ -56,7 +57,6 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 
 					//choose signup by phone
 					driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
-					WebDriverWait wait = new WebDriverWait(driver, 20);	
 					
 					// enter phone number according to the parameters			
 					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.SignUp_phoneNumber)))
@@ -91,9 +91,9 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 		}
 	
 	//tests without parameters
-	public static class NegativeTests_signUpByPhone_notParameterized extends Tests_signUp_main  {	
+	public static class NegativeTests_signUpByPhone_notParameterized extends Tests_signUp_MAIN  {	
 		
-		//TEST - sign up with phone, entered by the user (The comment markers should be deleted if this test is needed)
+		//TEST - sign up with incorrect phone, entered by the user (The comment markers should be deleted if this test is needed)
 		@Test		
 		public  void N_signUp_byPhone_numberEnteredByUser() throws InterruptedException {			
 			/*			
@@ -104,7 +104,6 @@ public class Negative_Tests_signUp_byPhone extends Tests_signUp_main {
 
 				//choose signup by phone
 				driver.findElement(By.xpath(ElementsLogin.SignUp_phone_button)).click();
-				WebDriverWait wait = new WebDriverWait(driver, 20);	
 				
 				// enter temporary phone number** : 		
 						System.out.println("Please enter your phone number:   ");

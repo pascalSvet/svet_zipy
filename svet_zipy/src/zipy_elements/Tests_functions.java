@@ -26,7 +26,7 @@ import zipy_elements.*;
 	
 public class Tests_functions {
 	
-	// A function for login.
+	// A function for login with test user.
 	public static void logIn(WebDriver driver) throws Exception{
 			
 		//press login button		
@@ -41,6 +41,21 @@ public class Tests_functions {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));											
 	}
 	
+	// A function for login with Vika user.
+	public static void logInVika(WebDriver driver) throws Exception{
+			
+		//press login button		
+		JavascriptExecutor ex=(JavascriptExecutor)driver;
+		ex.executeScript("arguments[0].click()", driver.findElement(By.xpath(ElementsLogin.Login_button)));
+		Thread.sleep(500);
+						
+		//enter login+password and wait for the logging-in
+		new Actions (driver).moveToElement(driver.findElement(By.xpath(ElementsLogin.Login_usernameField))).click()
+		.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(ElementsLogin.Username, Keys.TAB, ElementsLogin.Password, Keys.ENTER)
+		.build().perform();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.UserTopBar)));											
+	}
+	
 	// A function for unloging.
 	public static void unLogIn(WebDriver driver) throws Exception{
 			
@@ -51,10 +66,29 @@ public class Tests_functions {
 		//enter login+password and wait for the logging-in
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_disconnect))).click();				
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath(ElementsLogin.Login_button))).click();;											
-
 	}
 	
 
+	//close the pop-up window if exist
+	public static void closePopUp(WebDriver driver) throws Exception{
+			if (driver.findElements(By.xpath(ElementsLogin.Popup_welcome_close)).size() != 0){
+				driver.findElement(By.xpath(ElementsLogin.Popup_welcome_close)).click();
+				new WebDriverWait(driver, 10).
+				until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(ElementsLogin.Popup_welcome_close)));
+			}
+	}
+	
+	//open main website and close the pop-up window if exist
+		public static void openWebsiteAndClosePopUp(WebDriver driver, String website) throws Exception{
+			driver.get(website);
+				if (driver.findElements(By.xpath(ElementsLogin.Popup_welcome_close)).size() != 0){
+					driver.findElement(By.xpath(ElementsLogin.Popup_welcome_close)).click();
+					new WebDriverWait(driver, 10).
+					until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(ElementsLogin.Popup_welcome_close)));
+					driver.get(website);
+				}
+		}
+	
 	// A function for emptying the cart.
 	public static void emptyCart(WebDriver driver) throws Exception{
 		Thread.sleep(500);
